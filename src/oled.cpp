@@ -1,8 +1,8 @@
-#include "oled.h"
 #include "Adafruit_SSD1306.h"
-#include "../../bme280Sensor/src/bme280Sensor.h"
+#include "../include/oled.h"
+#include "../include/sensor.h"
 
-Adafruit_SSD1306 display = Adafruit_SSD1306(128, 32, &WIRE);
+auto display = Adafruit_SSD1306(128, 32, &WIRE);
 
 void oledSetup()
 {

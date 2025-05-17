@@ -1,4 +1,4 @@
-#include "bme280Sensor.h"
+#include "../include/sensor.h"
 
 #include <Adafruit_BME280.h>
 
@@ -37,7 +37,7 @@ SensorData getSensorData()
 
 void sensorLog()
 {
-    SensorData data = getSensorData();
+    auto data = getSensorData();
 
     Serial.print(F("Temperature = "));
     Serial.print(data.temperature);

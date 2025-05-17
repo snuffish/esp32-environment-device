@@ -1,7 +1,7 @@
 #include <Adafruit_BME280.h>
 
-#include "../lib/oled/src/oled.h"
-#include "../lib/bme280Sensor/src/bme280Sensor.h"
+#include "oled.h"
+#include "sensor.h""
 
 void setup()
 {
