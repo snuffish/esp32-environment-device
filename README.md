@@ -6,6 +6,7 @@ This is an alternative if an WiFi connection isn`t avaible at the desired locati
 
 ## Features
 
+- Uses the `I2C` Protocol (Inter-Integrated Circuit)
 - BME280 (Environment Sensor)
 - SSD1306 (Oled Display)
 - SIM800L (GSM 2G MobileNetwork Receiver/Transmitter)
