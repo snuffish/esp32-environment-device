@@ -1,5 +1,5 @@
-#ifndef OLED_H
-#define OLED_H
+#ifndef HEADER_H
+#define HEADER_H
 
 #include <Arduino.h>
 
@@ -14,10 +14,10 @@
   #define BUTTON_C  5
   #define WIRE Wire
 #elif defined(ESP32)
-  #define BUTTON_A 15
-  #define BUTTON_B 32
-  #define BUTTON_C 14
-  #define WIRE Wire
+#define BUTTON_A 15
+#define BUTTON_B 32
+#define BUTTON_C 14
+#define WIRE Wire
 #elif defined(ARDUINO_STM32_FEATHER)
   #define BUTTON_A PA15
   #define BUTTON_B PC7
@@ -45,7 +45,11 @@
   #define WIRE Wire
 #endif
 
-void oledSetup();
-void refreshOled();
+#define DELAY 1000
 
-#endif //OLED_H
+// Forward declarations to avoid circular dependencies
+class OledDisplay;
+class Sensor;
+struct SensorData;
+
+#endif //HEADER_H

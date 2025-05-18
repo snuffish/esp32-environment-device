@@ -2,12 +2,21 @@
 #include "../include/oled.h"
 #include "../include/sensor.h"
 
-auto display = Adafruit_SSD1306(128, 32, &WIRE);
+Adafruit_SSD1306 display(128, 32, &WIRE);
+
+void clearDisplay()
+{
+    display.clearDisplay();
+    display.display();
+
+    display.setTextSize(1);
+    display.setTextColor(SSD1306_WHITE);
+    display.setCursor(0, 0);
+}
 
 void oledSetup()
 {
-    // SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
-    display.begin(SSD1306_SWITCHCAPVCC, 0x3C); // Address 0x3C for 128x32
+    display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
 
     Serial.println("Oled started!");
     display.display();
@@ -39,12 +48,7 @@ void printRow(const String& title, const float value, const char* unit, const si
 
 void refreshOled()
 {
-    display.clearDisplay();
-    display.display();
-
-    display.setTextSize(1);
-    display.setTextColor(SSD1306_WHITE);
-    display.setCursor(0, 0);
+    clearDisplay();
 
     SensorData data = getSensorData();
     printRow("Temp", data.temperature, "C");
@@ -52,6 +56,5 @@ void refreshOled()
     printRow("Pressure", data.pressure, "hPa");
 
     display.display();
-
     delay(1000);
 }
