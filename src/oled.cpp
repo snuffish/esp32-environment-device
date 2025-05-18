@@ -1,11 +1,11 @@
-#include "Adafruit_SSD1306.h"
-#include "../include/oled.h"
-#include "../include/sensor.h"
-
-Adafruit_SSD1306 display(128, 32, &WIRE);
+#include "Adafruit_Sensor.h"
+#include "DisplayManager.h"
+#include "headers.h"
 
 void clearDisplay()
 {
+    auto display = DisplayManager::getDisplay();
+
     display.clearDisplay();
     display.display();
 
@@ -14,16 +14,7 @@ void clearDisplay()
     display.setCursor(0, 0);
 }
 
-void oledSetup()
-{
-    display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
-
-    Serial.println("Oled started!");
-    display.display();
-    delay(1000);
-}
-
-String formatDisplayValue(float value, int precision, const char* unit)
+String formatDisplayValue(const float value, const int precision, const char* unit)
 {
     char valueStr[10];
     dtostrf(value, 4, precision, valueStr);
@@ -42,6 +33,8 @@ void printRow(const String& title, const float value, const char* unit, const si
         paddedTitle += " ";
     }
 
+    auto display = DisplayManager::getDisplay();
+
     display.print(paddedTitle + "= " + formatDisplayValue(value, 1, unit));
     display.println();
 }
@@ -50,11 +43,12 @@ void refreshOled()
 {
     clearDisplay();
 
-    SensorData data = getSensorData();
-    printRow("Temp", data.temperature, "C");
-    printRow("Humidity", data.humidity, "%");
-    printRow("Pressure", data.pressure, "hPa");
-
+    // auto& [temperature, humidity, pressure] = sensorData;
+    // printRow("Temp", temperature, "C");
+    // printRow("Humidity", humidity, "%");
+    // printRow("Pressure", pressure, "hPa");
+    //
+    auto display = DisplayManager::getDisplay();
     display.display();
     delay(1000);
 }

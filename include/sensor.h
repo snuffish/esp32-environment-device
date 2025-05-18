@@ -1,15 +1,14 @@
 #ifndef SENSOR_H
 #define SENSOR_H
 
-struct SensorData {
+typedef struct SensorData
+{
     float temperature;
     float humidity;
     float pressure;
-};
+} SensorData;
 
 void sensorSetup();
 SensorData getSensorData();
-
-void print();
 
 #endif //SENSOR_H

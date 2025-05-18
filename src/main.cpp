@@ -1,33 +1,38 @@
 #include <Arduino.h>
 #include <WiFi.h>
+#include <Wire.h>
 
-#include "Adafruit_SSD1306.h"
-#include "oled.h"
-#include "sensor.h"
-#include "wifi.h"
-
-extern Adafruit_SSD1306 display;
-extern void clearDisplay();
+#include "DisplayManager.h"
 
 void setup()
 {
     Serial.begin(9600);
 
     Serial.println("Initializing OLED Display...");
-    oledSetup();
 
     Serial.println("Initializing WiFi...");
-    setupWiFi();
 
-    Serial.println("Initializing BME280 Sensor...");
-    sensorSetup();
+    // Serial.println("Initializing BME280 Sensor...");
+    // sensorSetup();
 }
 
 void loop()
 {
-    if (WiFi.isConnected())
-    {
-        refreshOled();
-    }
+    Serial.println("Hello World!");
+
+    // DisplayManager::clearDisplay();
+
+    auto display = DisplayManager::getDisplay();
+    //
+    display.println("HEJSAN");
+    display.println("PÅ");
+    display.println("DIGSAN");
+    display.display();
+
+
+    // if (WiFi.isConnected())
+    // {
+    //     // refreshOled();
+    // }
     delay(1000);
 }
