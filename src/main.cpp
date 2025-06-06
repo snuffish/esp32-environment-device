@@ -23,16 +23,14 @@ void setup() {
     tft.setCursor(10, 10); // Set cursor position
     tft.print("Hello, World!"); // Print text
 
-    // tft.drawBitmap(2, 1, image_Layer_1_bits, 5, 4, 0xFFFF);*/
+    // music_radio_streaming
+    tft.drawBitmap(0, 0, image_music_radio_streaming_bits, 17, 16, 0xFFFF);
 
-    // // music_radio_streaming
-    // tft.drawBitmap(0, 0, image_music_radio_streaming_bits, 17, 16, 0xFFFF);
-    //
-    // // Layer 2
-    // tft.setTextColor(0xFFFF);
-    // tft.setTextSize(1);
-    // tft.setCursor(21, 5);
-    // tft.print("IR Signals");
+    // Layer 2
+    tft.setTextColor(0xFFFF);
+    tft.setTextSize(1);
+    tft.setCursor(21, 5);
+    tft.print("IR Signals");
 
 }
 
