@@ -1,7 +1,3 @@
-//
-// Created by snuffish on 2025-06-08.
-//
-
 #ifndef ICONS_H
 #define ICONS_H
 
